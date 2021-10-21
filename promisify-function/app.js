@@ -19,8 +19,8 @@ async function fetchUser(id, callback) {
 }
 
 const promisify = (fn) => {
-	return async function (id) {
-		return await fn(id, function (error, selectedUser) {
+	return function (id) {
+		return fn(id, function (error, selectedUser) {
 			return new Promise((resolve, reject) => {
 				if (error) {
 					reject(error);
