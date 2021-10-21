@@ -1,7 +1,7 @@
 const generator = (num) => {
 	let f1 = 1,
-		f2 = 1;
-	before = 1;
+		f2 = 1,
+		before = 1;
 
 	if (num == 1 || num == 2) {
 		return 1;
