@@ -1,4 +1,4 @@
-async function fetchUser(id, callback) {
+function fetchUser(id, callback) {
 	const users = {
 		1: {
 			uid: 1,
@@ -11,17 +11,15 @@ async function fetchUser(id, callback) {
 
 	const error = selectedUser ? null : "No User Found";
 
-	return new Promise((resolve) => {
-		setTimeout(function () {
-			resolve(callback(error, selectedUser));
-		}, 2000);
-	});
+	setTimeout(function () {
+		callback(error, selectedUser);
+	}, 2000);
 }
 
 const promisify = (fn) => {
 	return function (id) {
-		return fn(id, function (error, selectedUser) {
-			return new Promise((resolve, reject) => {
+		return new Promise((resolve, reject) => {
+			fn(id, function (error, selectedUser) {
 				if (error) {
 					reject(error);
 				} else {
